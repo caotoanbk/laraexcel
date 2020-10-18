@@ -11,7 +11,7 @@
 	<div class="container">		
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
-		    <h3 class="panel-title" style="padding:12px 0px;font-size:25px;"><strong>Laravel 5.3 - import export csv or excel file into database example</strong></h3>
+		    <h3 class="panel-title" style="padding:12px 0px;font-size:25px;"><strong>Tải lên bảng công tháng</strong></h3>
 		  </div>
 		  <div class="panel-body">
 
@@ -33,13 +33,36 @@
 				<h3>Import File Form:</h3>
 				<form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 20px;" action="{{ URL::to('importExcel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
 
+					<div class="form-group">
+						<label for="" class="control-label col-sm-2">Excel File:</label>
+						<div class="col-sm-10">
+							<input type="file" name="import_file" style="border: none; margin-top:5px;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
 
-					<input type="file" name="import_file" />
+						</div>
+					</div>
 					{{ csrf_field() }}
-					<br/>
+					<div class="form-group">
+						<label class="control-label col-sm-2">Công ty</label>
+						<div class="col-sm-8">
+					<select name="congty" id="congty" class="form-control">
+						<option value="">Haesung</option>
+						<option value="">LG Display</option>
+					</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="control-label col-sm-2">Tháng:</label>
+						<div class="col-sm-8">
 
+							<input type="text" placeholder="tháng" class="form-control"/>
+						</div>
+					</div>
 
-					<button class="btn btn-primary">Import CSV or Excel File</button>
+					<div class="form-group">
+						<div class="col-sm-8 col-sm-offset-2">
+							<button type="submit" class="btn btn-primary">Import CSV or Excel File</button>
+							</div>	
+					</div>
 
 
 				</form>

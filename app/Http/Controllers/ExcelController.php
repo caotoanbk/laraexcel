@@ -26,8 +26,6 @@ class ExcelController extends Controller
     //import file to database code
     public function importExcel(Request $request)
 	{
-
-
 		if($request->hasFile('import_file')){
 			$file = $request->file('import_file');
 			$path = $file->getRealPath();
@@ -38,9 +36,10 @@ class ExcelController extends Controller
 			
 			$public_path = public_path('uploads/'.$file->getClientOriginalName());
 			$data = Excel::load($public_path, function($reader) {})->get();
-
 			if(!empty($data) && $data->count()){
 				foreach ($data->toArray() as $key => $value) {
+					$arr = $data->toArray();
+					dd($arr[1][11]);
 					if(!empty($value)){
 						foreach ($value as $v) {		
 							$insert[] = ['title' => $v['title'], 'description' => $v['description']];
