@@ -8,9 +8,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('importExport', 'ExcelController@importExport');
+Route::get('importExport', 'ExcelController@importExport')->name('uploadexcel');
 
 Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+
+Route::get('crudapp', 'HomeController@crudapp')->name('crudapp');
 
 Route::post('importExcel', 'ExcelController@importExcel');
 

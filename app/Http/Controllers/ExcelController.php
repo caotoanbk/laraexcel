@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use App\Wclient;
 use Excel;
 
 class ExcelController extends Controller
 {
     public function importExport()
     {
-        return view('importExport');
+		$clients = Wclient::pluck('WclientsName', 'Id');
+        return view('importExport', compact('clients'));
     }
 
     //file export code
@@ -26,6 +28,7 @@ class ExcelController extends Controller
     //import file to database code
     public function importExcel(Request $request)
 	{
+		dd($request->all());
 		if($request->hasFile('import_file')){
 			$file = $request->file('import_file');
 			$path = $file->getRealPath();

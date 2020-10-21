@@ -9,3 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+reg 41: turn off 12,11,6,5
+reg 42: turn off 0,2,3,4,5,6

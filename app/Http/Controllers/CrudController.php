@@ -26,12 +26,6 @@ class CrudController extends Controller
                 // dd($command);
                 $datatables = eval("return $command;");
             }
-            if($key == 'ApprovalusersId'){
-                $datatables->editColumn('ApprovalusersId', function($m){
-                    $user = \App\User::findOrFail($m->ApprovalusersId);
-                    return $user->name.'(id:'.$user->id.')';
-                });
-            }
             if($key == 'WusersId'){
                 $datatables->editColumn('WusersId', function($m){
                     $user = \App\User::findOrFail($m->WusersId);
@@ -50,8 +44,8 @@ class CrudController extends Controller
         return $datatables->addColumn('actions', function ($value) use ($table) {
                 return '<form action="/crud/'.$table.'/destroy/'.$value->id.'" method="POST">
    
-                <a style="color: #333;" href="/crud/'.$table.'/show/'.$value->id.'">Xem</a>
-                <a style="color: #333;" href="/crud/'.$table.'/edit/'.$value->id.'">Sửa</i></a>'.csrf_field().'<input type="hidden" name="_method" value="delete" />
+                <a class="text-sm text-muted" href="/crud/'.$table.'/show/'.$value->id.'"><i class="fa fa-desktop"></i></a>
+                <a class="text-sm" href="/crud/'.$table.'/edit/'.$value->id.'"><i class="fa fa-pencil"></i></a>'.csrf_field().'<button type="submit" style="background: none;border: none;color: red;"><i class="fa fa-trash"></i></button><input type="hidden" name="_method" value="delete" />
                 </form>';})->rawColumns(['actions'])->make(true);
                 //<button type="submit" style="background: none;border: none;color: red;"><i class="fa fa-trash"></i></button>
     }
@@ -181,8 +175,8 @@ class CrudController extends Controller
      */
     public function destroy($table, $id)
     {
-        if(\Auth::user()->type != 2)
-            return redirect()->route('crud.index', $table);
+        // if(\Auth::user()->type != 2)
+        //     return redirect()->route('crud.index', $table);
         $str = '\\App\\'.ucfirst($table).'::find('.$id.')';
         $model = eval("return $str;");
         $model->delete();

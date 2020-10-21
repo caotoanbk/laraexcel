@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Crudapp;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function crudapp()
+    {
+        $apps = Crudapp::all();
+        return view('crudapp', compact('apps'));
     }
 }

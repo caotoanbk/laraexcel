@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "bootstrap-scss": "^4.5.2",
-    "datatables.net": "^1.10.22"
+    "datatables.net": "^1.10.22",
+    "datatables.net-bs4": "^1.10.22",
+    "flatpickr": "^4.6.6",
+    "fontawesome-4.7": "^4.7.0"
   }
 }

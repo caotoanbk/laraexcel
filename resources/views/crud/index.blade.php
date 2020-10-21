@@ -11,7 +11,7 @@
         }
         table td{
             font-size: 14px;
-            max-width: 100px;
+            /*max-width: 100px;*/
             overflow: auto;
             white-space: nowrap;
             scrollbar-width: none; /* Firefox */
@@ -33,28 +33,22 @@
     </style>
 @endsection
 @section('content')
-    <?php
-        if($table == 'company'){
-            $arr_cities = \DB::table('cities')->get();
-            $arr_industries = \DB::table('industries')->get();
-        }
-    ?>
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success mt-2">
             <p>{{ $message }}</p>
         </div>
     @endif
 
-    <div class="card shadow mb-4">
+    <div class="card shadow my-4">
         <div class="card-body">
-          <div class="table-responsive" style="max-width: 1000px;margin:0 auto;">
-              <a style="color: blue; margin-bottom:10px; display: inline-block;" href="/crud/{{$table}}/create"><i class="fa fa-plus"></i> Thêm mới</a>
-            <table class="table table-bordered table-sm" id="{{$table}}_table" style="margin-top: 10px;">
+          <div class="table-responsive" style="margin:0 auto;">
+              <a style="" class="btn btn-primary btn-sm mb-2" href="/crud/{{$table}}/create"><i class="fa fa-plus"></i> Thêm mới</a>
+            <table class="table table-bordered table-sm" id="{{$table}}_table" style="width: 100%;margin-top: 10px;">
                 <thead>
                     <th>Action</th>
                     <th style="min-width: 30px !important;">Id</th>
                     @foreach($columnInfos as $key => $value)
-                    <th @if($key=="CompanyProduct") class="c_product" @endif>{{ convertColumnNameToString($key) }}</th>
+                    <th>{{ convertColumnNameToString($key) }}</th>
                     @endforeach
                 </thead>
 
@@ -71,7 +65,6 @@
 
     <script>
     $(function() {
-        console.log("hello worlddd");
         $('.alert.alert-success').delay(2000).slideUp();
         var columnObj = <?php echo json_encode($columnInfos); ?>;
         const keys = Object.keys(columnObj);
@@ -89,6 +82,7 @@
             "serverSide": true,
             "method": 'get',
             "scrollX": true,
+            "select": true,
             "paging": true,
             "pageLength": 10,
             "ajax": {
@@ -98,7 +92,7 @@
             "columns": columnConfig
         });
         
-        $('select[name={{$table}}_table_length]').removeClass('form-control').addClass('select_tbl_uv');
+        //$('select[name={{$table}}_table_length]').removeClass('form-control').addClass('select_tbl_uv');
     });
     </script>
 @endsection
