@@ -12,6 +12,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+        }
+        a,a:focus, button:focus{
+            outline: 0;
+        }
+    </style>
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -27,20 +39,22 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                 @else
-                    <li class="nav-item"><a class="nav-link" href="{{ route('crudapp') }}">CRUD</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('uploadexcel') }}">Upload Bảng Công</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="{{ route('tracuu') }}">Tra cứu</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('bangcong') }}">Bảng công</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('uploadexcel') }}">Upload Bảng Công</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ route('crudapp') }}" >Cài đặt</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" 
-                            aria-labelledby="navbarDropdownMenuLink"
-                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                        aria-labelledby="navbarDropdownMenuLink"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}</form>
-                        </div>
-                    </li>
+                            {{ csrf_field() }}</form>
+                    </div>
+                </li>
                 @endif
                 </ul>
             </div>
@@ -56,6 +70,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/datatables.bootstrap4.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
     @yield('javascript')
 </body>
 </html>

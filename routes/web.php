@@ -1,7 +1,8 @@
 <?php
 
 Route::get('/', function () {
-    $excel = App::make('excel');
+    //$excel = App::make('excel');
+    return redirect('/home');
 });
 
 Auth::routes();
@@ -13,6 +14,11 @@ Route::get('importExport', 'ExcelController@importExport')->name('uploadexcel');
 Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
 
 Route::get('crudapp', 'HomeController@crudapp')->name('crudapp');
+
+Route::get('/tra-cuu', 'HomeController@tracuu')->name('tracuu');
+Route::get('/ket-qua-tra-cuu', 'HomeController@kqtracuu')->name('kqtracuu');
+Route::get('/bang-cong', 'HomeController@bangcong')->name('bangcong');
+Route::get('/bang-cong/data', 'HomeController@bangcongData')->name('bangcong.data');
 
 Route::post('importExcel', 'ExcelController@importExcel');
 

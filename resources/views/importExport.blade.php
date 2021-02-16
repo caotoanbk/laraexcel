@@ -17,33 +17,33 @@
 				@endif
 
 
-				<h3>Tải lên bảng công tháng:</h3>
-				<form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 20px;" action="{{ URL::to('importExcel') }}" method="post" enctype="multipart/form-data">
+				<h3 class="text-center mt-4">Upload bảng công</h3>
+				<form class="mx-auto" style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 20px; max-width: 500px;" action="{{ URL::to('importExcel') }}" method="post" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="" class="control-label col-sm-2">Excel File:</label>
-						<div class="col-sm-10">
+						<label for="" class="control-label col-sm-12">Excel File <a href="#">&lt;Tải file mẫu&gt;</a></label>
+						<div class="col-sm-12">
 							<input required type="file" name="import_file" style="border: none; margin-top:5px;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
 
 						</div>
 					</div>
 					{{ csrf_field() }}
 					<div class="form-group">
-						<label class="control-label col-sm-2">Công ty</label>
-						<div class="col-sm-8">
+						<label class="control-label col-sm-4">Công ty</label>
+						<div class="col-sm-12">
 						{!! Form::select('congty', $clients , null, ['placeholder' => 'Select..', 'class' => 'form-control', 'required']) !!}
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label col-sm-2">Tháng:</label>
-						<div class="col-sm-8">
+						<label for="" class="control-label col-sm-4">Ngày</label>
+						<div class="col-sm-12">
 
-							<input name="month" type="text" required="required" placeholder="tháng" class="form-control datepickr"/>
+							<input name="ngaylam" type="text" required="required" class="form-control datepickr"/>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-8 col-sm-offset-2">
-							<button type="submit" class="btn btn-primary">Import CSV or Excel File</button>
+							<button type="submit" class="btn btn-primary">Upload</button>
 							</div>	
 					</div>
 
@@ -59,6 +59,6 @@
 
 @section('javascript')
 	<script>
-	flatpickr('.datepickr',{enableTime: false, dateFormat: "Y-m", allowInput: true});
+	flatpickr('.datepickr',{enableTime: false, dateFormat: "Y-m-d", allowInput: true});
 	</script>
 @endsection
