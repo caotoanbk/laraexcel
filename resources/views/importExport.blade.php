@@ -40,7 +40,12 @@
 							<input name="ngaylam" type="text" required="required" class="form-control datepickr"/>
 						</div>
 					</div>
-
+					<div class="form-group">
+						<label class="control-label col-sm-4">Loại ngày</label>
+						<div class="col-sm-12">
+						{!! Form::select('day_type', ['0' => 'Ngày thường', '1' => 'Ngày nghỉ', '2' => 'Ngày lễ'] , null, ['placeholder' => 'Select..', 'class' => 'form-control', 'required']) !!}
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="col-sm-8 col-sm-offset-2">
 							<button type="submit" class="btn btn-primary">Upload</button>

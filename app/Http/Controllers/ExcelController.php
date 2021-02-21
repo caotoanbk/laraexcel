@@ -86,7 +86,7 @@ class ExcelController extends Controller
 							'tc1' => strval(is_null($row[16])?"":$row[16]),
 							'gc2' => strval(is_null($row[17])?"":$row[17]),
 							'tc2' => strval(is_null($row[18])?"":$row[18]),
-							'day_type' => 0
+							'day_type' => $request->get('day_type')
 						]);
 					}else{					
 						$new_bangcong = Osstatistic::create([
@@ -98,7 +98,7 @@ class ExcelController extends Controller
 							'tc1' => strval(is_null($row[16])?"":$row[16]),
 							'gc2' => strval(is_null($row[17])?"":$row[17]),
 							'tc2' => strval(is_null($row[18])?"":$row[18]),
-							'day_type' => 0
+							'day_type' => $request->get('day_type')
 						]);
 					}
 	

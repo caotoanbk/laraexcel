@@ -28,7 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // return view('home');
+        return redirect('/tra-cuu');
     }
 
     public function crudapp()
@@ -55,6 +56,8 @@ class HomeController extends Controller
         return Datatables::of($data)
                             ->editColumn('day_type', function($row){
                                 if($row->day_type == 0) return 'Ngày thường';
+                                if($row->day_type == 1) return 'Ngày nghỉ';
+                                if($row->day_type == 2) return 'Ngày lễ';
                             })
                             ->make(true);
     }

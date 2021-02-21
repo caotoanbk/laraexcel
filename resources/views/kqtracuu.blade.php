@@ -119,7 +119,7 @@
 										$ngay = $thang.'-'.str_pad($i,2,"0",STR_PAD_LEFT);
 										$it = $result->where('ngay_lam', $ngay)->last();
 									?>
-									<tr>
+									<tr class="@if($it->day_type > 0) bg-warning @endif">
 										<td>{{$i}}</td>
 										<td>{{date_format(date_create($ngay), 'd/m/Y')}}</td>
 										<td>{{$it->gc != '' ? $it->gc : '-'}}</td>
